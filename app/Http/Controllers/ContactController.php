@@ -5,11 +5,22 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('web');
+    }
+
     public function index(Contact $contact)
     {
+        $user = Auth::user();
+        if ($user) {
+
+        }
+       
         $contacts = $contact->all();
         return view("admin/index", ["contacts" => $contacts]);
     }
