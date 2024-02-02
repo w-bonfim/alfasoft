@@ -25,7 +25,6 @@ class StoreContactRequest extends FormRequest
         return [
             'name' =>  'required|min:6|max:50',
             'phone' => 'required|numeric|digits:9',
-            // 'email' => 'required|email|unique:contacts',
             'email' => ['required', Rule::unique('contacts', 'email')->ignore($this->id, 'id'), 'email', 'max:255'],
         ];
     }
@@ -37,12 +36,12 @@ class StoreContactRequest extends FormRequest
                 'required' => 'O nome é obrigatório.',
                 'min' => 'O nome deve conter no mínimo seis caracteres.',
                 'max' => 'O nome deve conter no máximo cinquenta caracteres.',
-                'digits' => 'O nome deve conter no máximo cinquenta caracteres.',
             ],
             'phone' => [
                 'required' => 'O telefone é obrigatório.',
-                'max' => 'O nome deve conter no máximo nove caracteres.',
-                'numeric' => 'O campo telefone deve ser um número.',
+                'max' => 'O telefone deve conter no máximo nove caracteres.',
+                'numeric' => 'O telefone deve ser um número.',
+                'digits' => 'O telefone deve conter no máximo nove caracteres.',
             ],
             'email' => [
                 'required' => 'O e-mail é obrigatório.',
