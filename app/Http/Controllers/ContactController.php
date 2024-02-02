@@ -15,12 +15,7 @@ class ContactController extends Controller
     }
 
     public function index(Contact $contact)
-    {
-        $user = Auth::user();
-        if ($user) {
-
-        }
-       
+    {       
         $contacts = $contact->all();
         return view("admin/index", ["contacts" => $contacts]);
     }
