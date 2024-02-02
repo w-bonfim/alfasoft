@@ -6,6 +6,12 @@
 <div class="container">
     <h1>Listagem de Contatos</h1>
 
+    @if (session()->has('message'))
+        <div class="alert alert-success" role="alert">
+        {{ session()->get('message') }}
+        </div>
+    @endif
+
     <a href="{{ route('contact.create') }}" class="btn btn-primary">Criar contato</a>
 
     <table class="table">
@@ -23,7 +29,7 @@
                     <td>{{ $contact->name }}</td>
                     <td>{{ $contact->phone }}</td>
                     <td>{{ $contact->email }}</td>
-                    <td><a href="">Detalhe</a></td>
+                    <td><a href="{{ route("contact.show", $contact->id) }}">Detalhe</a></td>
                 </tr>
             @endforeach
         </tbody>
